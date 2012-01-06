@@ -1,0 +1,30 @@
+#summary Relevantne značajke
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+		     timeEnergyMax
+                     timeEnergyMin
+                     timeEnergyVar
+                     timePowerDbRange
+                     timePowerDbMedian
+                     timePowerDbChangerate
+                     timeZcrMin
+                     timePitchMax
+                     timePitchMin
+                     frequencyEnergyMean
+                     frequencyEnergyMin
+                     frequencyPowerDbRange
+                     frequencyZcrRange
+                     frequencyPitchMean
+                     frequencyPitchRange
+                     frequencyPitchStd
+                     frequencyPitchChangerate
+                     mfcc1
+                     mfcc2
+                     mfcc9
+                     mfcc10
