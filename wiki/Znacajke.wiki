@@ -7,24 +7,24 @@ Add your content here.
 
 = Details =
 
-		     timeEnergyMax
-                     timeEnergyMin
-                     timeEnergyVar
-                     timePowerDbRange
-                     timePowerDbMedian
-                     timePowerDbChangerate
-                     timeZcrMin
-                     timePitchMax
-                     timePitchMin
-                     frequencyEnergyMean
-                     frequencyEnergyMin
-                     frequencyPowerDbRange
-                     frequencyZcrRange
-                     frequencyPitchMean
-                     frequencyPitchRange
-                     frequencyPitchStd
-                     frequencyPitchChangerate
-                     mfcc1
-                     mfcc2
-                     mfcc9
-                     mfcc10
+timeEnergyMax<br>
+timeEnergyMin<br>
+timeEnergyVar<br>
+timePowerDbRange<br>
+timePowerDbMedian<br>
+timePowerDbChangerate<br>
+timeZcrMin<br>
+timePitchMax<br>
+timePitchMin<br>
+frequencyEnergyMean<br>
+frequencyEnergyMin<br>
+frequencyPowerDbRange<br>
+frequencyZcrRange<br>
+frequencyPitchMean<br>
+frequencyPitchRange<br>
+frequencyPitchStd<br>
+frequencyPitchChangerate<br>
+mfcc1<br>
+mfcc2<br>
+mfcc9<br>
+mfcc10<br>
