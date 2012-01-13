@@ -40,10 +40,13 @@ namespace EmoClassifier.Classifiers
 
             // dodaj nadznačajke
             IFeature Super_TimeAverage = new Features.TimeAverage(DataProvider);
-            
+            //IFeature Super_Maximum = new Features.Maximum(DataProvider);
+ 
             List<IFeature> SuperFeatList = new List<IFeature>();
             // napravi listu značajki za podznačajku Sub_TimeAverage
             SuperFeatList.Add(Super_TimeAverage);
+            //SuperFeatList.Add(Super_Maximum);
+            
             SuperFeatures.Add(Sub_TimeEnergy, SuperFeatList);
 
             SuperFeatList.Clear();

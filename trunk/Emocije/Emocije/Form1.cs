@@ -87,7 +87,7 @@ namespace Emocije
             Application.Exit();
         }
 
-
+        
 
         public List<string> ShowOnGraph = new List<string> {  "Energy", "PowerDb", "ZeroCrossingRate" };
         public void SetUpChart()
