@@ -19,6 +19,7 @@ namespace EmoClassifier
     {
         public delegate void ClassifComplete(object sender, ClassifierEventArgs e);
         public delegate void SubFeaturesComp(object sender, SubFeaturesComputedEventArgs e);
+        public delegate void SuperFeaturesComp(object sender, SubFeaturesComputedEventArgs e);
 
 
         private FastQueue<double> SubData { get; set; }
@@ -32,7 +33,7 @@ namespace EmoClassifier
         public int SuperWindowLength { get; set; }
         public int SuperWindowShift { get; set; }
         public List<double> FinalFeatures { get; protected set; }
-
+        public List<List<double>> AllFeatures = new List<List<double>>();
         private int _fs = 44100;
         public int SamplingFrequency 
         {
@@ -46,6 +47,7 @@ namespace EmoClassifier
         
         public List<EmoClassifierResult> Results { get; protected set; }
 
+        public bool DataEmpty { get; set; }
 
         public IDataProvider DataProvider { get; set; }
 
@@ -58,11 +60,12 @@ namespace EmoClassifier
         /// Fires if SubFeatures are computed
         /// </summary>
         public event SubFeaturesComp SubFeaturesComputed;
+        public event SuperFeaturesComp SuperFeaturesComputed;
 
         public AbstractClassifier()
         {
             Results = new List<EmoClassifierResult>();
-            SubData = new FastQueue<double>(100000);
+            SubData = new FastQueue<double>(500000);
             SubFeatures = new List<IFeature>();
             SubResults = new Dictionary<IFeature,FastQueue<double>>();
             FinalFeatures = new List<double>();
@@ -153,7 +156,13 @@ namespace EmoClassifier
                 }
 
             }
+
+            SubFeaturesComputedEventArgs e = new SubFeaturesComputedEventArgs();
+            e.ComputedFeatures = FinalFeatures;
+            SuperFeaturesComputed.Invoke(this, e);
+
             Classify();
+            AllFeatures.Add(new List<double>(FinalFeatures));
             FinalFeatures.Clear();
             if (SubResults.First().Value.Count > SuperWindowLength)
                 ComputeSuperFeatures();

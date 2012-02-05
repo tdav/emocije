@@ -26,11 +26,11 @@ namespace Emocije
         {
             waveInStream = new WaveIn();
             waveInStream.WaveFormat = new WaveFormat(44100,1);
-
+            /*
             waveInStream.DataAvailable += new EventHandler<WaveInEventArgs>(waveInStream_DataAvailable);
             waveInStream.StartRecording();
 
-
+            
             Classifier = new EmoClassifier.Classifiers.GoodClassifier();
 
             Classifier.SubWindowLength = 1024; // 44100 [samples per second] * 0.025 [25 milisecond interval]
@@ -43,6 +43,7 @@ namespace Emocije
             Classifier.ClassificationComplete +=new EmoClassifier.AbstractClassifier.ClassifComplete(Classifier_ClassificationComplete);
             SetUpChart();
             Classifier.SubFeaturesComputed += new EmoClassifier.AbstractClassifier.SubFeaturesComp(Classifier_SubFeaturesComputed);
+             */
         }
 
         void Classifier_SubFeaturesComputed(object sender, EmoClassifier.SubFeaturesComputedEventArgs e)
@@ -142,6 +143,11 @@ namespace Emocije
 
             string s = "";
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EmoClassifier.Testing.AllFeaturesComp.ComputeAllFeatures("", "");
         }
 
     }
