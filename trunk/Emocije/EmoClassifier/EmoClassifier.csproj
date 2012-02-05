@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MatrixLibrary">
+      <HintPath>..\MatrixLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClassifier.cs" />
+    <Compile Include="cMatrixLib.cs" />
     <Compile Include="DataProviders\FourierDataProvider.cs" />
     <Compile Include="EmoClassifierResult.cs" />
     <Compile Include="FastQueue.cs" />
