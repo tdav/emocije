@@ -25,7 +25,7 @@ namespace EmoClassifier.Features
 
         public void Compute()
         {
-            double c = GetCoefficient(DataProvider.Data.ToArray(), (uint)DataProvider.SamplingFrequency, 12, (uint)DataProvider.Data.Count(), this.Coefficient);
+            double c = GetCoefficient(DataProvider.PowerSpectra.ToArray(), (uint)DataProvider.SamplingFrequency, 12, (uint)DataProvider.Data.Count(), this.Coefficient);
             this.Feature = c;
         }
 

@@ -18,7 +18,7 @@ namespace EmoClassifier.DataProviders
             set
             {
                 this._data = value;
-                //NormalizeData();
+                NormalizeData();
                 CalculateFourierTransform();
             }
         }
@@ -26,11 +26,12 @@ namespace EmoClassifier.DataProviders
         public int SamplingFrequency { get; set; }
         #endregion
 
-        public List<double> PowerSpectra = new List<double>();
+        public List<double> PowerSpectra { get; set; }
         LomontFFT fft = new LomontFFT();
             
         private void CalculateFourierTransform()
         {
+            PowerSpectra = new List<double>();
             int len=Data.Count();
             len = (int)Math.Pow(2,Math.Floor(Math.Log((double)len, 2))+1);
             List<double> D = Data.ToList();
