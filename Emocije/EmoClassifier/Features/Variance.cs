@@ -33,5 +33,10 @@ namespace EmoClassifier.Features
         }
 
         #endregion
+
+        public Variance(IDataProvider DataProvider  )
+        {
+            this.DataProvider = DataProvider;
+        }
     }
 }

@@ -42,26 +42,30 @@ namespace EmoClassifier.Classifiers
 
             // dodaj nadznačajke
             IFeature Super_TimeAverage = new Features.TimeAverage(DataProvider);
-            //IFeature Super_Maximum = new Features.Maximum(DataProvider);
- 
+            IFeature Super_Maximum = new Features.Maximum(DataProvider);
+            IFeature Super_Minimum = new Features.Minimum(DataProvider);
+            IFeature Super_Range = new Features.Range(DataProvider);
+            IFeature Super_Median = new Features.Median(DataProvider);
+            IFeature Super_Std = new Features.Std(DataProvider);
+            IFeature Super_Variance = new Features.Variance(DataProvider);
+            IFeature Super_ChangeRate = new Features.ChangeRate(DataProvider);
+
+
             List<IFeature> SuperFeatList = new List<IFeature>();
             
-            // napravi listu značajki za podznačajku Sub_TimeAverage
+         
             SuperFeatList.Add(Super_TimeAverage);
+            SuperFeatList.Add(Super_Maximum);
+            SuperFeatList.Add(Super_Minimum);
+            SuperFeatList.Add(Super_Range);
+            SuperFeatList.Add(Super_Median);
+            SuperFeatList.Add(Super_Std);
+            SuperFeatList.Add(Super_Variance);
+            SuperFeatList.Add(Super_ChangeRate);
+                
             SuperFeatures.Add(Sub_TimeEnergy, SuperFeatList);
-
-            // napravi listu značajki za podznačajku Sub_TimePowerDb
-            SuperFeatList.Clear();
-            SuperFeatList.Add(Super_TimeAverage);
-            SuperFeatures.Add(Sub_TimePowerDb, SuperFeatList);
-
-            SuperFeatList.Clear();
-            // napravi listu značajki za podznačajku Sub_ZeroCrossingRate
-            SuperFeatList.Add(Super_TimeAverage);
+            SuperFeatures.Add(Sub_TimePowerDb, SuperFeatList);  
             SuperFeatures.Add(Sub_ZeroCrossingRate, SuperFeatList);
-
-            SuperFeatList.Clear();
-            SuperFeatList.Add(Super_TimeAverage);
             SuperFeatures.Add(Sub_Pitch, SuperFeatList);
 
         }
