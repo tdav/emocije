@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------	
 using System;
 
-namespace MatrixLibrary
+namespace EmoClassifier
 {
 	#region "Exception in the Library"
 	class MatrixLibraryExceptions: ApplicationException

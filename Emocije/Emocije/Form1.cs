@@ -50,7 +50,7 @@ namespace Emocije
             int i = 0;
             foreach (string s in ShowOnGraph)
             {
-                chartSubFeatures.Series[s].Points.AddXY(ChartTime, e.ComputedFeatures[i++]);
+                chartSubFeatures.Series[s].Points.AddXY(ChartTime, e.ComputedFeatures[1]);
             }
             ChartTime++;
 
