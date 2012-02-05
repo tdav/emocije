@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmoClassifier.Features
 {
-    class Range : IFeature
+    public class Range : IFeature
     {
         #region IFeature Members
 
