@@ -23,6 +23,7 @@ namespace EmoClassifier.DataProviders
             }
         }
 
+        public int SamplingFrequency { get; set; }
         #endregion
 
         public List<double> PowerSpectra = new List<double>();
@@ -30,9 +31,13 @@ namespace EmoClassifier.DataProviders
             
         private void CalculateFourierTransform()
         {
-            List<double> D = Data.Take<double>(1024).ToList();
-            while (D.Count() < 1024)
+            int len=Data.Count();
+            len = (int)Math.Pow(2,Math.Floor(Math.Log((double)len, 2))+1);
+            List<double> D = Data.ToList();
+
+            while (D.Count() < len)
                 D.Add(0);
+
             double[] dat = D.ToArray();
             fft.RealFFT(dat, true);
             PowerSpectra.Add(dat[0] * dat[0]);

@@ -14,7 +14,7 @@ namespace EmoClassifier.Features
 
         public string Description
         {
-            get { return "MFCC"; }
+            get { return "MFCC " + Coefficient.ToString(); }
         }
 
         public double Feature
@@ -25,7 +25,7 @@ namespace EmoClassifier.Features
 
         public void Compute()
         {
-            double c = GetCoefficient(DataProvider.Data.ToArray(), 44100, 48, 1024, this.Coefficient);
+            double c = GetCoefficient(DataProvider.Data.ToArray(), (uint)DataProvider.SamplingFrequency, 24, (uint)DataProvider.Data.Count(), this.Coefficient);
             this.Feature = c;
         }
 

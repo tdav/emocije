@@ -8,5 +8,6 @@ namespace EmoClassifier
     public interface IDataProvider
     {
         List<double> Data { get; set; }
+        int SamplingFrequency { get; set; }
     }
 }
