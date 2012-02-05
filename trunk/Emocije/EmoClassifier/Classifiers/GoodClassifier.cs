@@ -34,13 +34,14 @@ namespace EmoClassifier.Classifiers
             IFeature Sub_TimePowerDb = new Features.TimePowerDb(DataProvider);
             IFeature Sub_ZeroCrossingRate = new Features.ZeroCrossingRate(DataProvider);
             IFeature Sub_Pitch = new Features.Pitch(DataProvider);
-            IFeature Sub_Mfcc = new Features.MFCC(DataProvider, 3);
 
-            //SubFeatures.Add(Sub_TimeEnergy);
-            //SubFeatures.Add(Sub_TimePowerDb);
-            //SubFeatures.Add(Sub_ZeroCrossingRate);
-            //SubFeatures.Add(Sub_Pitch);
-            SubFeatures.Add(Sub_Mfcc);
+            List<Features.ChangeRate> Sub_mfcc = new List<Features.ChangeRate>();
+            
+            SubFeatures.Add(Sub_TimeEnergy);
+            SubFeatures.Add(Sub_TimePowerDb);
+            SubFeatures.Add(Sub_ZeroCrossingRate);
+            SubFeatures.Add(Sub_Pitch);
+
             // dodaj nadznačajke
             IFeature Super_TimeAverage = new Features.TimeAverage(DataProvider);
             IFeature Super_Maximum = new Features.Maximum(DataProvider);
@@ -53,8 +54,7 @@ namespace EmoClassifier.Classifiers
 
 
             List<IFeature> SuperFeatList = new List<IFeature>();
-            /*
-         
+                   
             SuperFeatList.Add(Super_TimeAverage);
             SuperFeatList.Add(Super_Maximum);
             SuperFeatList.Add(Super_Minimum);
@@ -68,10 +68,16 @@ namespace EmoClassifier.Classifiers
             SuperFeatures.Add(Sub_TimePowerDb, SuperFeatList);  
             SuperFeatures.Add(Sub_ZeroCrossingRate, SuperFeatList);
             SuperFeatures.Add(Sub_Pitch, SuperFeatList);
-            */
-            SuperFeatList.Clear();
+
+            SuperFeatList = new List<IFeature>();
             SuperFeatList.Add(Super_TimeAverage);
-            SuperFeatures.Add(Sub_Mfcc, SuperFeatList);
+
+            for (int i = 0; i < 12; i++)
+            {
+                SuperFeatures.Add(new Features.ChangeRate(DataProvider),SuperFeatList);
+            }
+
+                
         }
 
         public override event AbstractClassifier.ClassifComplete ClassificationComplete;
