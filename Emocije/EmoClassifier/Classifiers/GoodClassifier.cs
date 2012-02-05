@@ -63,6 +63,15 @@ namespace EmoClassifier.Classifiers
             IFeature Super_Variance = new Features.Variance(DataProvider);
             IFeature Super_ChangeRate = new Features.ChangeRate(DataProvider);
 
+            IFeature Super_FFTAverage = new Features.FFTAverage(DataProvider);
+            IFeature Super_FFTMaximum = new Features.FFTMaximum(DataProvider);
+            IFeature Super_FFTMinimum = new Features.FFTMinimum(DataProvider);
+            IFeature Super_FFTRange = new Features.FFTRange(DataProvider);
+            IFeature Super_FFTMedian = new Features.FFTMedian(DataProvider);
+            IFeature Super_FFTStd = new Features.FFTStd(DataProvider);
+            IFeature Super_FFTVariance = new Features.FFTVariance(DataProvider);
+            IFeature Super_FFTChangeRate = new Features.FFTChangeRate(DataProvider);
+
 
             List<IFeature> SuperFeatList = new List<IFeature>();
                    
@@ -74,7 +83,16 @@ namespace EmoClassifier.Classifiers
             SuperFeatList.Add(Super_Std);
             SuperFeatList.Add(Super_Variance);
             SuperFeatList.Add(Super_ChangeRate);
-                
+            SuperFeatList.Add(Super_FFTAverage);
+            SuperFeatList.Add(Super_FFTMaximum);
+            SuperFeatList.Add(Super_FFTMinimum);
+            SuperFeatList.Add(Super_FFTRange);
+            SuperFeatList.Add(Super_FFTMedian);
+            SuperFeatList.Add(Super_FFTStd);
+            SuperFeatList.Add(Super_FFTVariance);
+            SuperFeatList.Add(Super_FFTChangeRate);
+
+
             SuperFeatures.Add(Sub_TimeEnergy, SuperFeatList);
             SuperFeatures.Add(Sub_TimePowerDb, SuperFeatList);  
             SuperFeatures.Add(Sub_ZeroCrossingRate, SuperFeatList);
@@ -83,7 +101,7 @@ namespace EmoClassifier.Classifiers
             SuperFeatList = new List<IFeature>();
             SuperFeatList.Add(Super_TimeAverage);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 12; i++)
             {
                 IFeature f = new Features.MFCC(DataProvider,(uint)(i+1));
                 SubFeatures.Add(f);
