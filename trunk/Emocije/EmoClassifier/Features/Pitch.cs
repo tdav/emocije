@@ -26,7 +26,7 @@ namespace EmoClassifier.Features
         public void Compute()
         {
             List<double> Data = DataProvider.Data;
-            this.Feature = getPitch(Data.ToArray(), Data.Count());
+            this.Feature = getPitch(Data.ToArray(), Data.Count())*DataProvider.SamplingFrequency/44100.0;
         }
 
         public IDataProvider DataProvider

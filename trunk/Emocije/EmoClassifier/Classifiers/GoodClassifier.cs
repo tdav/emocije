@@ -72,9 +72,12 @@ namespace EmoClassifier.Classifiers
             SuperFeatList = new List<IFeature>();
             SuperFeatList.Add(Super_TimeAverage);
 
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 3; i++)
             {
-                SuperFeatures.Add(new Features.MFCC(DataProvider,(uint)(i+1)),SuperFeatList);
+                IFeature f = new Features.MFCC(DataProvider,(uint)(i+1));
+                SubFeatures.Add(f);
+                SuperFeatures.Add(f,SuperFeatList);
+
             }
 
                 
