@@ -32,9 +32,20 @@ namespace EmoClassifier
         public int SuperWindowLength { get; set; }
         public int SuperWindowShift { get; set; }
         public List<double> FinalFeatures { get; protected set; }
-        
+
+        private int _fs = 44100;
+        public int SamplingFrequency 
+        {
+            get { return _fs; }
+            set
+            {
+                _fs = value;
+                this.DataProvider.SamplingFrequency = _fs;
+            }
+        }
         
         public List<EmoClassifierResult> Results { get; protected set; }
+
 
         public IDataProvider DataProvider { get; set; }
 
@@ -64,7 +75,6 @@ namespace EmoClassifier
             this.SuperWindowLength = 80; // 44100 [samples per second] / 1102 [SubFeatures per second] * 2 [seconds]
             this.SuperWindowShift = 40; // 44100 [samples per second] / 1102 [SubFeatures per second] * 1 [seconds]
 
-            
             //Napravi feature
             MakeFeatures();
 

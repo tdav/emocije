@@ -33,12 +33,13 @@ namespace Emocije
 
             Classifier = new EmoClassifier.Classifiers.GoodClassifier();
 
-            Classifier.SubWindowLength = 1102; // 44100 [samples per second] * 0.025 [25 milisecond interval]
-            Classifier.SubWindowShift = 661; // 44100 [samples per second] * 0.015 [15 milisecond interval]
+            Classifier.SubWindowLength = 1024; // 44100 [samples per second] * 0.025 [25 milisecond interval]
+            Classifier.SubWindowShift = 512; // 44100 [samples per second] * 0.015 [15 milisecond interval]
 
             Classifier.SuperWindowLength = 80; // 44100 [samples per second] / 1102 [SubFeatures per second] * 2 [seconds]
             Classifier.SuperWindowShift = 40; // 44100 [samples per second] / 1102 [SubFeatures per second] * 1 [seconds]
-            
+
+            Classifier.SamplingFrequency = 44100;
             Classifier.ClassificationComplete +=new EmoClassifier.AbstractClassifier.ClassifComplete(Classifier_ClassificationComplete);
             SetUpChart();
             Classifier.SubFeaturesComputed += new EmoClassifier.AbstractClassifier.SubFeaturesComp(Classifier_SubFeaturesComputed);
