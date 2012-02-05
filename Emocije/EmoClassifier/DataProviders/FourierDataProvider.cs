@@ -24,12 +24,24 @@ namespace EmoClassifier.DataProviders
         }
 
         #endregion
-         
-        public List<double> FourierDataReal { get; set; }
-        public List<double> FourierDataImag { get; set; }
 
+        public List<double> PowerSpectra = new List<double>();
+        LomontFFT fft = new LomontFFT();
+            
         private void CalculateFourierTransform()
-        { }
+        {
+            List<double> D = Data.Take<double>(1024).ToList();
+            while (D.Count() < 1024)
+                D.Add(0);
+            double[] dat = D.ToArray();
+            fft.RealFFT(dat, true);
+            PowerSpectra.Add(dat[0] * dat[0]);
+            for (int i = 2; i < dat.Length; i+=2)
+            {
+                PowerSpectra.Add(dat[i] * dat[i] + dat[i + 1] * dat[i + 1]);
+            }
+            PowerSpectra.Add(dat[1] * dat[1]);
+        }
 
         private void NormalizeData()
         {
