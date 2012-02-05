@@ -74,7 +74,7 @@ namespace EmoClassifier.Classifiers
 
             for (int i = 0; i < 12; i++)
             {
-                SuperFeatures.Add(new Features.ChangeRate(DataProvider),SuperFeatList);
+                SuperFeatures.Add(new Features.MFCC(DataProvider,(uint)(i+1)),SuperFeatList);
             }
 
                 
