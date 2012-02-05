@@ -7,18 +7,35 @@ namespace EmoClassifier
 {
     public class GaussDistrib 
     {
-        public static double[,] Probability (double[,] data, double[,] mu, double[,] sigma)
+        public static double[,] Probability (double[,] data, double[,] mu, double[,,] sigma, int k)
         {
          
-            double len = data.GetLength(0);
-
+            double[,] mu1 = new double [mu.GetLength(0),1];
+            double[,] sigma1 = new double [sigma.GetLength(0),sigma.GetLength(1)];
+       
             double p1;
             double[,] p2;
-            double[,] sub = Matrix.Subtract(data,mu);
 
-            p1 = (Math.Pow(len, 2 * Math.PI)) * Matrix.Det(sigma);
+            double len = data.GetLength(0);
 
-            p2 = Matrix.Multiply(Matrix.Transpose(sub), Matrix.Inverse(sigma));
+            for (int i = 0; i < mu.GetLength(0); i++)
+            {
+                mu1[i,1] = mu[i,k];
+            }
+
+            for (int i = 0; i < sigma.GetLength(0); i++)
+            {
+                for (int j = 0; j < sigma.GetLength(1); j++)
+                {
+                    sigma1[i, j] = sigma[i, j, k];
+                }
+            }
+
+            double[,] sub = Matrix.Subtract(data,mu1);
+
+            p1 = (Math.Pow(len, 2 * Math.PI)) * Matrix.Det(sigma1);
+
+            p2 = Matrix.Multiply(Matrix.Transpose(sub), Matrix.Inverse(sigma1));
             p2 = Matrix.Multiply(p2, sub);
             p2 = Matrix.ScalarMultiply(-0.5,p2);
 
