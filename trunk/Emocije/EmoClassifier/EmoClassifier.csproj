@@ -63,6 +63,7 @@
     <Compile Include="Features\TimePowerDb.cs" />
     <Compile Include="Features\Variance.cs" />
     <Compile Include="Features\ZeroCrossingRate.cs" />
+    <Compile Include="GaussDistrib.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="IFeature.cs" />
     <Compile Include="LomontFFT.cs" />
