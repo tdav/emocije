@@ -18,7 +18,7 @@ namespace EmoClassifier.DataProviders
             set
             {
                 this._data = value;
-                NormalizeData();
+                //NormalizeData();
                 CalculateFourierTransform();
             }
         }
