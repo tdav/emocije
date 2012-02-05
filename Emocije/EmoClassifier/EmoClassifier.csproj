@@ -48,8 +48,9 @@
     <Compile Include="Features\Maximum.cs" />
     <Compile Include="Features\Median.cs" />
     <Compile Include="Features\Minimum.cs" />
+    <Compile Include="Features\Pitch.cs" />
     <Compile Include="Features\Range.cs" />
-    <Compile Include="Features\Standard deviation.cs" />
+    <Compile Include="Features\Std.cs" />
     <Compile Include="Features\TimeAverage.cs" />
     <Compile Include="ClassifierEventArgs.cs" />
     <Compile Include="Classifiers\GoodClassifier.cs" />

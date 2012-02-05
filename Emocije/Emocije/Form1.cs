@@ -89,7 +89,7 @@ namespace Emocije
 
         
 
-        public List<string> ShowOnGraph = new List<string> {  "Energy", "PowerDb", "ZeroCrossingRate" };
+        public List<string> ShowOnGraph = new List<string> {  "Energy", "PowerDb", "ZeroCrossingRate", "Pitch" };
         public void SetUpChart()
         {
 
