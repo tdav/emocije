@@ -32,5 +32,10 @@ namespace EmoClassifier.Features
         }
 
         #endregion
+
+        public Std(IDataProvider DataProvider  )
+        {
+            this.DataProvider = DataProvider;
+        }
     }
 }

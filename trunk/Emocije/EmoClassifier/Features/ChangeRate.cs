@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmoClassifier.Features
 {
-    public class Changerate : IFeature
+    public class ChangeRate : IFeature
     {
         #region IFeature Members
 
@@ -34,5 +34,9 @@ namespace EmoClassifier.Features
 
         #endregion
 
+        public ChangeRate(IDataProvider DataProvider  )
+        {
+            this.DataProvider = DataProvider;
+        }
     }
 }

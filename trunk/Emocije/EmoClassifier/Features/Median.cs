@@ -27,12 +27,18 @@ namespace EmoClassifier.Features
 
             if (Data.Count % 2 != 0)
                 median = Data[middle];
-            else 
+            else
                 median = (Data[middle] + Data[middle - 1]) / 2;
 
             Feature = median;
         }
 
         #endregion
+
+
+        public Median(IDataProvider DataProvider)
+        {
+            this.DataProvider = DataProvider;
+        }
     }
 }

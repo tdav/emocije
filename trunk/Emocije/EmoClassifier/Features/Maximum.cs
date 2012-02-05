@@ -32,5 +32,9 @@ namespace EmoClassifier.Features
 
         #endregion
 
+        public Maximum(IDataProvider DataProvider  )
+        {
+            this.DataProvider = DataProvider;
+        }
     }
 }
