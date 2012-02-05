@@ -16,6 +16,17 @@ namespace EmoClassifier.Classifiers
             // rezultate spremi u res
             // ispali događaj ClassificationComplete
 
+            //double[] p = new double [14];
+            //double[] mappedClassNames = new double [14];
+            //double[] x = new double [14];
+
+            //struct model{
+            //    double[,] mu;
+            //    double[,,] sigma;
+            //    double[] weight;
+            //}
+       
+
             EmoClassifierResult res = new EmoClassifierResult();
             
             
