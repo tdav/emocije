@@ -47,6 +47,7 @@
     <Compile Include="Features\ChangeRate.cs" />
     <Compile Include="Features\Maximum.cs" />
     <Compile Include="Features\Median.cs" />
+    <Compile Include="Features\MFCC.cs" />
     <Compile Include="Features\Minimum.cs" />
     <Compile Include="Features\Pitch.cs" />
     <Compile Include="Features\Range.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Features\ZeroCrossingRate.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="IFeature.cs" />
+    <Compile Include="LomontFFT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testing\TestManager.cs" />
   </ItemGroup>
