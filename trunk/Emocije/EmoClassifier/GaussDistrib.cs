@@ -9,7 +9,7 @@ namespace EmoClassifier
     {
         public static double[,] Probability (double[,] data, double[,] mu, double[,,] sigma, int k)
         {
-         
+            
             double[,] mu1 = new double [mu.GetLength(0),1];
             double[,] sigma1 = new double [sigma.GetLength(0),sigma.GetLength(1)];
        
