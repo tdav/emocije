@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MiscUtil">
+      <HintPath>.\MiscUtil.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio, Version=1.4.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NAudio.dll</HintPath>
@@ -46,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClassifier.cs" />
+    <Compile Include="Classifiers\GMM.cs" />
+    <Compile Include="Classifiers\HMM.cs" />
     <Compile Include="cMatrixLib.cs" />
     <Compile Include="DataProviders\FourierDataProvider.cs" />
     <Compile Include="EmoClassifierResult.cs" />

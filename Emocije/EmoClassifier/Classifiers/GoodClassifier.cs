@@ -15,7 +15,7 @@ namespace EmoClassifier.Classifiers
             // provedi klasifikaciju
             // rezultate spremi u res
             // ispali događaj ClassificationComplete
-
+            /*
             double[] p = new double [14];
             string[,] mappedClassNames = new string[5,1] {{"anger"},{"sadness"},{"neutral"},{"happiness"},{"fear"}};
             double[,] x = new double [11,1];
@@ -68,17 +68,17 @@ namespace EmoClassifier.Classifiers
             double[] weight = new double [5] {0.2707, 0.1727, 0.0909, 0.4108, 0.0550};
     
             
-            int i,j;                
+                         
         
             mu=Matrix.ScalarMultiply(Math.Pow(4,10),mu);
             double[] prob = new double[5];
 
-            for (j = 0; j < 5; j++)
+            for (int j = 0; j < 5; j++)
             {
-                prob[j] = Matrix.Multiply(weight[j] * GaussDistrib.Probability(x, mu, sigma, j);
+                //prob[j] = Matrix.Multiply(weight[j] * GaussDistrib.Probability(x, mu, sigma, j));
             }
 
-
+            */
 
             EmoClassifierResult res = new EmoClassifierResult();
             

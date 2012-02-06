@@ -88,7 +88,7 @@ namespace EmoClassifier
 
         }
 
-        public string Description
+        public virtual string Description
         {
             get { return "This is a classifier"; }
             protected set{}
@@ -111,7 +111,7 @@ namespace EmoClassifier
 
         private void ComputeSubFeatures()
         {
-            DateTime d = DateTime.Now;
+            //DateTime d = DateTime.Now;
             List<double> CurrentData;
     
             CurrentData = this.SubData.Peek(SubWindowLength);
@@ -125,11 +125,11 @@ namespace EmoClassifier
                 SubResults[f].Enqueue(f.Feature);
                 ComputedFeatures.Add(f.Feature);
             }
-            TimeSpan ts = DateTime.Now - d;
-            int ms = ts.Milliseconds;
-            SubFeaturesComputedEventArgs e = new SubFeaturesComputedEventArgs();
-            e.ComputedFeatures = ComputedFeatures;
-            SubFeaturesComputed.Invoke(this, e);
+            //TimeSpan ts = DateTime.Now - d;
+            //int ms = ts.Milliseconds;
+            //SubFeaturesComputedEventArgs e = new SubFeaturesComputedEventArgs();
+            //e.ComputedFeatures = ComputedFeatures;
+            //SubFeaturesComputed.Invoke(this, e);
 
             if (SubResults.First().Value.Count > SuperWindowLength)
                 ComputeSuperFeatures();

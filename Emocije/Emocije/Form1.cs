@@ -8,22 +8,25 @@ using System.Text;
 using System.Windows.Forms;
 using NAudio;
 using NAudio.Wave;
+using EmoClassifier.Classifiers;
+using EmoClassifier;
 
 namespace Emocije
 {
     public partial class Form1 : Form
     {
         WaveIn waveInStream;
-        EmoClassifier.Classifiers.GoodClassifier Classifier;
         double ChartTime = 0;
         NAudio.Gui.WaveformPainter WavePainter = new NAudio.Gui.WaveformPainter();
+        AbstractClassifier Classifier;
+        List<AbstractClassifier> ComboList = new List<AbstractClassifier>();
 
         public Form1()
         {
             InitializeComponent();
 
 
-            WavePainter.Top = 295;
+            WavePainter.Top = 320;
             WavePainter.Left = 20;
             WavePainter.Width = 900;
             WavePainter.Height = 370;
@@ -31,8 +34,10 @@ namespace Emocije
             WavePainter.ForeColor = Color.DarkBlue;
             this.Controls.Add(WavePainter);
 
-       
-        
+            ComboList.Add(new GMM());
+            ComboList.Add(new HMM());
+            cbxClassifier.DataSource = ComboList;
+            cbxClassifier.DisplayMember = "Description";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,17 +45,7 @@ namespace Emocije
             
             
             
-            Classifier = new EmoClassifier.Classifiers.GoodClassifier();
-
-            Classifier.SubWindowLength = 1024; // 44100 [samples per second] * 0.025 [25 milisecond interval]
-            Classifier.SubWindowShift = 512; // 44100 [samples per second] * 0.015 [15 milisecond interval]
-
-            Classifier.SuperWindowLength = 80; // 44100 [samples per second] / 1102 [SubFeatures per second] * 2 [seconds]
-            Classifier.SuperWindowShift = 40; // 44100 [samples per second] / 1102 [SubFeatures per second] * 1 [seconds]
-
-
-            Classifier.SamplingFrequency = 44100;
-
+       
             txtSampFreq.Text = "44100";
             txtFeatWindow.Text = "80";
             txtFeatShift.Text = "40";
@@ -61,14 +56,7 @@ namespace Emocije
             btnStop.Enabled = false;
 
             
-            Classifier.ClassificationComplete +=new EmoClassifier.AbstractClassifier.ClassifComplete(Classifier_ClassificationComplete);
-            SetUpChart();
-            Classifier.SubFeaturesComputed += new EmoClassifier.AbstractClassifier.SubFeaturesComp(Classifier_SubFeaturesComputed);
-        }
-
-        void Classifier_SubFeaturesComputed(object sender, EmoClassifier.SubFeaturesComputedEventArgs e)
-        {
-            
+           SetUpChart();
         }
 
         void Classifier_ClassificationComplete(object sender, EmoClassifier.ClassifierEventArgs e)
@@ -203,6 +191,9 @@ namespace Emocije
                 return;
 
 
+            Classifier = (AbstractClassifier)cbxClassifier.SelectedItem;
+            Classifier.ClassificationComplete +=new EmoClassifier.AbstractClassifier.ClassifComplete(Classifier_ClassificationComplete);
+  
             Classifier.SubWindowLength = SubWindowLength;
             Classifier.SubWindowShift = SubWindowShift;
             Classifier.SuperWindowLength = SuperWindowLength;
@@ -225,6 +216,25 @@ namespace Emocije
             waveInStream.Dispose();
             btnStart.Enabled = true;
             btnStop.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EmoClassifier.Matrix x = new EmoClassifier.Matrix(2,1);
+            x[0,0] = 3;
+            x[1,0] = 2;
+            EmoClassifier.Matrix mu = new EmoClassifier.Matrix(2,1);
+            mu[0,0] = 1;
+            mu[1,0] = 4;
+            EmoClassifier.Matrix sigma = new EmoClassifier.Matrix(2,2);
+            sigma[0,0] = 1;
+            sigma[1,0] = 4;
+            sigma[0,1] = 1;
+            sigma[1,1] = 2;
+
+            double res = EmoClassifier.GaussDistrib.Probability(x, mu, sigma);
+
+            EmoClassifier.Matrix mat = new EmoClassifier.Matrix(EmoClassifier.Classifiers.GMM.sigma0);
         }
 
     }
