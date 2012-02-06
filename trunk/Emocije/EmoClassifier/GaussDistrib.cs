@@ -7,6 +7,13 @@ namespace EmoClassifier
 {
     public class GaussDistrib 
     {
+        public static double Probability(Matrix x, Matrix mu, Matrix sigma)
+        {
+            double p1 = 0.1;// Math.Pow(2 * Math.PI, x.NoRows) * Matrix.Det((sigma));
+            Matrix m1 =  (Matrix.Transpose(Matrix.Subtract(x, mu)) * Matrix.Inverse((sigma)) * Matrix.Subtract(x, mu));
+            double p2 = -0.005 * m1[0, 0];
+            return Math.Exp(p2) / p1;
+        }
         public static double[,] Probability (double[,] data, double[,] mu, double[,,] sigma, int k)
         {
             

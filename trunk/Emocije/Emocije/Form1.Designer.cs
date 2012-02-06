@@ -35,6 +35,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.GroupBox();
+            this.cbxClassifier = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtFeatShift = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(9, 166);
+            this.button1.Location = new System.Drawing.Point(255, 189);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -66,14 +67,14 @@
             this.chartSubFeatures.Legends.Add(legend1);
             this.chartSubFeatures.Location = new System.Drawing.Point(403, 15);
             this.chartSubFeatures.Name = "chartSubFeatures";
-            this.chartSubFeatures.Size = new System.Drawing.Size(524, 386);
+            this.chartSubFeatures.Size = new System.Drawing.Size(524, 412);
             this.chartSubFeatures.TabIndex = 6;
             this.chartSubFeatures.Text = "chart1";
             // 
             // btnStart
             // 
             this.btnStart.Image = ((System.Drawing.Image)(resources.GetObject("btnStart.Image")));
-            this.btnStart.Location = new System.Drawing.Point(38, 268);
+            this.btnStart.Location = new System.Drawing.Point(38, 294);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(134, 133);
             this.btnStart.TabIndex = 10;
@@ -83,7 +84,7 @@
             // btnStop
             // 
             this.btnStop.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.Image")));
-            this.btnStop.Location = new System.Drawing.Point(178, 268);
+            this.btnStop.Location = new System.Drawing.Point(178, 294);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(134, 133);
             this.btnStop.TabIndex = 11;
@@ -92,6 +93,7 @@
             // 
             // Settings
             // 
+            this.Settings.Controls.Add(this.cbxClassifier);
             this.Settings.Controls.Add(this.label5);
             this.Settings.Controls.Add(this.txtFeatShift);
             this.Settings.Controls.Add(this.label4);
@@ -105,10 +107,19 @@
             this.Settings.Controls.Add(this.txtSampFreq);
             this.Settings.Location = new System.Drawing.Point(12, 12);
             this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(336, 203);
+            this.Settings.Size = new System.Drawing.Size(336, 218);
             this.Settings.TabIndex = 13;
             this.Settings.TabStop = false;
             this.Settings.Text = "Settings";
+            // 
+            // cbxClassifier
+            // 
+            this.cbxClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxClassifier.FormattingEnabled = true;
+            this.cbxClassifier.Location = new System.Drawing.Point(9, 162);
+            this.cbxClassifier.Name = "cbxClassifier";
+            this.cbxClassifier.Size = new System.Drawing.Size(291, 21);
+            this.cbxClassifier.TabIndex = 23;
             // 
             // label5
             // 
@@ -194,7 +205,7 @@
             // 
             this.lblEmotion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblEmotion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEmotion.Location = new System.Drawing.Point(12, 218);
+            this.lblEmotion.Location = new System.Drawing.Point(12, 244);
             this.lblEmotion.Name = "lblEmotion";
             this.lblEmotion.Size = new System.Drawing.Size(336, 47);
             this.lblEmotion.TabIndex = 14;
@@ -204,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 579);
+            this.ClientSize = new System.Drawing.Size(939, 606);
             this.Controls.Add(this.lblEmotion);
             this.Controls.Add(this.Settings);
             this.Controls.Add(this.btnStop);
@@ -240,6 +251,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSampFreq;
         private System.Windows.Forms.Label lblEmotion;
+        public System.Windows.Forms.ComboBox cbxClassifier;
     }
 }
 
