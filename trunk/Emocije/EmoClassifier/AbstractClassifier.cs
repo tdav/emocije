@@ -157,10 +157,12 @@ namespace EmoClassifier
 
             }
 
-            SubFeaturesComputedEventArgs e = new SubFeaturesComputedEventArgs();
-            e.ComputedFeatures = FinalFeatures;
-            SuperFeaturesComputed.Invoke(this, e);
-
+            if (SuperFeaturesComputed != null)
+            {
+                SubFeaturesComputedEventArgs e = new SubFeaturesComputedEventArgs();
+                e.ComputedFeatures = FinalFeatures;
+                SuperFeaturesComputed.Invoke(this, e);
+            }
             Classify();
             AllFeatures.Add(new List<double>(FinalFeatures));
             FinalFeatures.Clear();

@@ -5,6 +5,7 @@ using System.Text;
 using NAudio;
 using NAudio.Wave;
 using System.IO;
+using System.Globalization;
 
 namespace EmoClassifier.Testing
 {
@@ -12,7 +13,7 @@ namespace EmoClassifier.Testing
     {
         static Classifiers.GoodClassifier Classifier;
 
-        public static void ComputeAllFeatures(string wavpath, string resultpath)
+        public static void ComputeAllFeatures(string wavpath, string resultpath, System.Windows.Forms.TextBox progress)
         {
             int aa=0;
             StreamWriter writer = new StreamWriter("d:\\features.txt");
@@ -45,11 +46,13 @@ namespace EmoClassifier.Testing
                 string line = "";
                 foreach (double d in Classifier.AllFeatures.First())
                 {
-                    line += d.ToString() + "\t";
+                    line += d.ToString(CultureInfo.InvariantCulture) + ",";
                 }
+                line = line.TrimEnd(',');
                 line += "\r\n";
                 writer.WriteLine(line);
-
+                writer.Flush();
+                progress.Text = i.ToString();
             }
             writer.Flush();
 
